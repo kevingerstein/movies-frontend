@@ -31,30 +31,34 @@ export default {
 </script>
 
 <template>
-  <div class="create-movie">
+  <div class="update-movie">
     <ul>
       <li v-for="error in errors" :key="error.id">{{ error }}</li>
     </ul>
     <form v-on:submit.prevent="updateMovie()">
       <p>
-        Title:
-        <input type="text" v-model="movieParams.title" />
+        <label for="title">Title:</label>
+        <input type="text" id="title" v-model="movieParams.title" />
       </p>
       <p>
-        Year:
-        <input type="text" v-model="movieParams.year" />
+        <label for="year">Year:</label>
+        <input type="text" id="text" v-model="movieParams.year" />
       </p>
       <p>
-        Plot:
-        <input type="text" v-model="movieParams.plot" />
+        <label for="year">Year:</label>
+        <input type="date" id="date" v-model="movieParams.date" />
       </p>
       <p>
-        Director:
-        <input type="text" v-model="movieParams.director" />
+        <label for="plot">Plot:</label>
+        <textarea id="plot" v-model="movieParams.plot"></textarea>
       </p>
       <p>
-        English:
-        <input type="checkbox" v-model="movieParams.english" />
+        <label for="director">Director:</label>
+        <input type="text" id="director" v-model="movieParams.director" />
+      </p>
+      <p>
+        <label for="english">English:</label>
+        <input type="checkbox" id="english" v-model="movieParams.english" />
       </p>
       <input type="submit" value="Update" />
     </form>

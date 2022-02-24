@@ -12,7 +12,10 @@ export default {
   },
   methods: {
     indexMovies: function () {
-      axios.get("/movies").then((response) => (this.movies = response.data));
+      axios.get("/movies").then((response) => {
+        this.movies = response.data;
+        console.log(response.data);
+      });
     },
   },
   computed: {
@@ -27,7 +30,8 @@ export default {
 
 <template>
   <div class="index-movies">
-    <input type="text" v-model="titleFilter" list="titles" />
+    <label for="titleFilter">Search:</label>
+    <input type="text" v-model="titleFilter" list="titles" id="titleFilter" />
     <datalist id="titles">
       <option v-for="movie in movies" v-bind:key="movie.id">
         {{ movie.title }}
@@ -35,7 +39,7 @@ export default {
     </datalist>
     <div v-for="movie in filteredMoviesByTitle" :key="movie.id">
       <h3>{{ movie.title }}</h3>
-      <p>{{ movie.year }}</p>
+      <p>{{ movie.date }}</p>
       <p>{{ movie.plot }}</p>
       <p>{{ movie.director }}</p>
       <router-link v-bind:to="`/movies/${movie.id}`">

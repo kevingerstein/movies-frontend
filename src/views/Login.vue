@@ -15,7 +15,7 @@ export default {
         .then((response) => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
-          this.$router.push("/");
+          this.$router.push("/movies");
         })
         .catch((error) => {
           console.log(error.response);
@@ -36,12 +36,12 @@ export default {
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
       <div>
-        <label>Email:</label>
-        <input type="email" v-model="newSessionParams.email" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="newSessionParams.email" />
       </div>
       <div>
-        <label>Password:</label>
-        <input type="password" v-model="newSessionParams.password" />
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="newSessionParams.password" />
       </div>
       <input type="submit" value="Submit" />
     </form>

@@ -30,27 +30,33 @@ export default {
     <ul>
       <li v-for="error in errors" :key="error.id">{{ error }}</li>
     </ul>
-    <p>
-      Title:
-      <input type="text" v-model="movieParams.title" />
-    </p>
-    <p>
-      Year:
-      <input type="text" v-model="movieParams.year" />
-    </p>
-    <p>
-      Plot:
-      <input type="text" v-model="movieParams.plot" />
-    </p>
-    <p>
-      Director:
-      <input type="text" v-model="movieParams.director" />
-    </p>
-    <p>
-      English:
-      <input type="checkbox" v-model="movieParams.english" />
-    </p>
-    <button v-on:click="createMovie()">Create</button>
+    <form v-on:submit.prevent="createMovie()">
+      <p>
+        <label for="title">Title:</label>
+        <input type="text" id="title" v-model="movieParams.title" />
+      </p>
+      <p>
+        <label for="year">Year:</label>
+        <input type="text" id="year" v-model="movieParams.year" />
+      </p>
+      <p>
+        <label for="date">Date:</label>
+        <input type="date" id="date" v-model="movieParams.year" />
+      </p>
+      <p>
+        <label for="plot">Plot:</label>
+        <input type="text" id="plot" v-model="movieParams.plot" />
+      </p>
+      <p>
+        <label for="director">Director:</label>
+        <input type="text" id="director" v-model="movieParams.director" />
+      </p>
+      <p>
+        <label for="english">English:</label>
+        <input type="checkbox" id="english" v-model="movieParams.english" />
+      </p>
+      <input type="submit" value="Create" />
+    </form>
   </div>
 </template>
 
